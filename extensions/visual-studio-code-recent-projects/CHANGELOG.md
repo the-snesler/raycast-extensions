@@ -1,5 +1,9 @@
 # Visual Studio Code Changelog
 
+## [Update] - 2025-09-23
+
+- Added support for Raycast on Windows.
+
 ## [Update] - 2025-08-04
 
 - Added support for Kiro.
