@@ -4,9 +4,8 @@ import fs from "fs";
 import { homedir } from "os";
 import { build } from "./preferences";
 import { EntryLike, RecentEntries } from "./types";
-import { isMacOS, isSameEntry } from "./utils";
+import { isSameEntry } from "./utils";
 import { execFilePromise } from "./utils/exec";
-import path from "path";
 
 export type RemoveMethods = {
   removeEntry: (entry: EntryLike) => Promise<void>;
@@ -84,9 +83,7 @@ export function useRecentEntries() {
 }
 
 function getPath() {
-  return isMacOS
-    ? `${homedir()}/Library/Application Support/${build}/User/globalStorage/state.vscdb`
-    : path.join(homedir(), "AppData", "Roaming", build, "User", "globalStorage", "state.vscdb");
+  return `${homedir()}/Library/Application Support/${build}/User/globalStorage/state.vscdb`;
 }
 
 async function saveEntries(entries: EntryLike[]) {

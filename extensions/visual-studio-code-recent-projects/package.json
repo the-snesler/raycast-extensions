@@ -28,8 +28,7 @@
     "xilopaint",
     "lachero",
     "pascal_burkhard",
-    "roberto.cinetto",
-    "TetraTsunami"
+    "roberto.cinetto"
   ],
   "keywords": [
     "vscode",
@@ -196,7 +195,7 @@
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.103.2",
+    "@raycast/api": "^1.79.0",
     "@raycast/utils": "^1.10.0",
     "cache-func": "^1.0.2",
     "lodash.get": "^4.4.2",
@@ -207,13 +206,13 @@
   "devDependencies": {
     "@raycast/eslint-config": "^1.0.11",
     "@types/lodash.get": "^4.4.7",
-    "@types/node": "^22.18.6",
-    "@types/react": "^19.1.1",
+    "@types/node": "^20.8.10",
+    "@types/react": "^18.3.3",
     "@types/sql.js": "^1.4.3",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.26.1",
-    "react": "^19.1.1",
-    "typescript": "^5.9.2"
+    "react": "^18.2.0",
+    "typescript": "^4.4.3"
   },
   "scripts": {
     "dev": "ray develop",
@@ -223,7 +222,6 @@
     "publish": "npx @raycast/api@latest publish"
   },
   "platforms": [
-    "macOS",
-    "Windows"
+    "macOS"
   ]
 }

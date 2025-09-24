@@ -313,7 +313,12 @@ function RemoteItem(
           </ActionPanel.Section>
           <RemoveActionSection {...props} />
           <PinActionSection {...props} />
-          <Action title="Open Preferences" icon={Icon.Gear} onAction={openExtensionPreferences} />
+          <Action
+            title="Open Preferences"
+            icon={Icon.Gear}
+            onAction={openExtensionPreferences}
+            shortcut={{ modifiers: ["cmd"], key: "," }}
+          />
         </ActionPanel>
       }
     />

@@ -4,7 +4,7 @@ import * as os from "os";
 import path from "path";
 import { useEffect, useState } from "react";
 import { getBuildNamePreference, getBuildScheme } from "./lib/vscode";
-import { fileExists, getErrorMessage, isMacOS, openURIinVSCode, raycastForVSCodeURI, waitForFileExists } from "./utils";
+import { fileExists, getErrorMessage, openURIinVSCode, raycastForVSCodeURI, waitForFileExists } from "./utils";
 
 interface CommandMetadata {
   command: string;
@@ -14,13 +14,14 @@ interface CommandMetadata {
 
 function transitFolder(): string {
   const build = getBuildNamePreference();
-  const ts = isMacOS
-    ? path.join(os.homedir(), `Library/Application Support/${build}/User/globalStorage/tonka3000.raycast/transit`)
-    : path.join(process.env.APPDATA || "", `${build}/User/globalStorage/tonka3000.raycast/transit`);
+  const ts = path.join(
+    os.homedir(),
+    `Library/Application Support/${build}/User/globalStorage/tonka3000.raycast/transit`
+  );
   return ts;
 }
 
-function CreateCommandQuickLinkAction(props: { command: CommandMetadata }): React.JSX.Element {
+function CreateCommandQuickLinkAction(props: { command: CommandMetadata }): JSX.Element {
   const c = props.command;
   const title = c.category ? `${c.category}: ${c.title}` : c.title;
   return (
@@ -59,7 +60,7 @@ async function getCommandFromVSCode() {
   throw new Error("Could not get VSCode commands");
 }
 
-function CommandListItem(props: { command: CommandMetadata }): React.JSX.Element {
+function CommandListItem(props: { command: CommandMetadata }): JSX.Element {
   const c = props.command;
   const title = (c: CommandMetadata) => {
     if (c.category) {
@@ -98,7 +99,7 @@ function CommandListItem(props: { command: CommandMetadata }): React.JSX.Element
   );
 }
 
-function InstallRaycastForVSCodeAction(): React.JSX.Element {
+function InstallRaycastForVSCodeAction(): JSX.Element {
   return (
     <Action.OpenInBrowser
       title="Install Raycast for Vscode"
@@ -111,7 +112,7 @@ function InstallRaycastForVSCodeAction(): React.JSX.Element {
   );
 }
 
-export default function CommandPaletteCommand(): React.JSX.Element {
+export default function CommandPaletteCommand(): JSX.Element {
   const { isLoading, commands, error, refresh } = useCommands();
   if (error) {
     showToast({ style: Toast.Style.Failure, title: "Error", message: error });

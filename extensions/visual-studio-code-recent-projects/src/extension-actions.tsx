@@ -4,10 +4,7 @@ import { getBuildNamePreference, getBuildScheme, getVSCodeCLI } from "./lib/vsco
 import { getErrorMessage } from "./utils";
 import { getEditorApplication } from "./utils/editor";
 
-export function InstallExtensionByIDAction(props: {
-  extensionID: string;
-  afterInstall?: () => void;
-}): React.JSX.Element {
+export function InstallExtensionByIDAction(props: { extensionID: string; afterInstall?: () => void }): JSX.Element {
   const handle = async () => {
     try {
       await showToast({ style: Toast.Style.Animated, title: "Install Extension" });
@@ -28,7 +25,7 @@ export function UninstallExtensionByIDAction(props: {
   extensionID: string;
   extensionName?: string;
   afterUninstall?: () => void;
-}): React.JSX.Element {
+}): JSX.Element {
   const handle = async () => {
     try {
       if (
@@ -64,7 +61,7 @@ export function UninstallExtensionByIDAction(props: {
 export function OpenExtensionByIDInVSCodeAction(props: {
   extensionID: string;
   onOpen?: (url: string) => void;
-}): React.JSX.Element {
+}): JSX.Element {
   const buildName = getBuildNamePreference();
 
   const { data: editorApp } = usePromise(async () => {
@@ -77,7 +74,7 @@ export function OpenExtensionByIDInVSCodeAction(props: {
   return <Action.OpenInBrowser title={title} url={url} icon={editorApp ? { fileIcon: editorApp.path } : "icon.png"} />;
 }
 
-export function OpenExtensionByIDInBrowserAction(props: { extensionID: string }): React.JSX.Element {
+export function OpenExtensionByIDInBrowserAction(props: { extensionID: string }): JSX.Element {
   const url = `https://marketplace.visualstudio.com/items?itemName=${props.extensionID}`;
   return <Action.OpenInBrowser title="Open in Browser" url={url} shortcut={{ modifiers: ["cmd"], key: "b" }} />;
 }
